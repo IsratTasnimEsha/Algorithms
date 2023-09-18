@@ -3,23 +3,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int mp[20];
+#include<bits/stdc++.h>
+using namespace std;
+
 int main()
-{
-    int n=10, k=5, sum=0;
-    int a[]={3, 9, -2, 4, 1, -7, 16, 6, 5, -8};
+{ 
+    int n = 10, k = -4;
+    vector<int> a = {-2, 1, 7, -12, 3, -2, 4, 2, 7, -1};
+    unordered_map<int, int> sumMap;
+    int sum = 0;
 
-    for(int i=0; i<20; i++) mp[i]=-1;
-    
-    for(int i=0; i<n; i++)
-    {
-        sum+=a[i];
-        mp[sum]=i;
+    for (int i = 0; i < n; i++) {
+        sum += a[i];
+        if (sumMap.find(sum - k) != sumMap.end()) {
+            cout << "Indices: " << sumMap[sum - k] + 1 << " " << i + 1 << endl;
+        }
+        sumMap[sum] = i;
     }
 
-    for(int i=0; i<20; i++) 
-    {
-        if(mp[i]==k) cout<<i<<endl;
-        else if(mp[i]!=-1 && mp[i+k]!=-1 && mp[i]<mp[i+k]) cout<<mp[i]+1<<"\t:\t"<<mp[i+k]<<endl;
-    }
+    return 0;
 }
