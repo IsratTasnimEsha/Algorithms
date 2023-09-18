@@ -1,8 +1,3 @@
-//Bismillahir Rahmanir Rahim
-
-#include <bits/stdc++.h>
-using namespace std;
-
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -15,10 +10,14 @@ int main()
 
     for (int i = 0; i < n; i++) {
         sum += a[i];
-        if (sumMap.find(sum - k) != sumMap.end()) {
-            cout << "Indices: " << sumMap[sum - k] + 1 << " " << i + 1 << endl;
-        }
         sumMap[sum] = i;
+    }
+
+    for (int i = 0; i < n; i++) {
+        int target = sum + k;
+        if (sumMap.find(target) != sumMap.end() && sumMap[target] > i) {
+            cout << "Indices: " << i + 1 << " " << sumMap[target] << endl;
+        }
     }
 
     return 0;
